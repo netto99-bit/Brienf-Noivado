@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing - Nosso Noivado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 8px solid #0f2547; /* Azul escuro principal */
+        }
+        h1 {
+            color: #0f2547;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+            font-size: 0.95em;
+        }
+        .form-group {
+            margin-bottom: 30px;
+        }
+        label.question {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #0f2547;
+            font-size: 1.1em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            color: #444;
+            line-height: 1.4;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #0f2547;
+            transform: scale(1.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            resize: vertical;
+            font-family: inherit;
+            min-height: 100px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #0f2547;
+        }
+        button {
+            background-color: #0f2547;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0a1830;
+        }
+        .success-msg {
+            display: none;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>A Identidade do Nosso Noivado</h1>
+    <p class="subtitle">Dia 25 de Julho de 2026 - O ponto de partida do nosso "Sim!"</p>
+    
+    <form id="briefingForm">
+        
+        <div class="form-group">
+            <label class="question">1. As Cores de Apoio</label>
+            <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">O azul escuro é o protagonista. Qual paleta combina mais com a nossa vibe?</p>
+            <label class="option"><input type="radio" name="cores" value="Azul e Dourado" required> Azul e Dourado (Clássico, elegante e luxuoso)</label>
+            <label class="option"><input type="radio" name="cores" value="Azul e Prata"> Azul e Prata/Cinza (Visual moderno e noturno)</label>
+            <label class="option"><input type="radio" name="cores" value="Azul e Branco"> Azul e Branco/Off-White (Limpo, leve e tradicional)</label>
+            <label class="option"><input type="radio" name="cores" value="Azul e Tons Pasteis"> Azul e Tons Pastéis (Romântico, quebra a seriedade)</label>
+        </div>
+
+        <div class="form-group">
+            <label class="question">2. A "Vibe" do Evento</label>
+            <label class="option"><input type="radio" name="vibe" value="Clássico" required> Clássico e Tradicional</label>
+            <label class="option"><input type="radio" name="vibe" value="Rústico"> Rústico (Texturas de madeira, kraft, algo mais quente)</label>
+            <label class="option"><input type="radio" name="vibe" value="Minimalista"> Minimalista (Menos é mais, fundo limpo, direto ao ponto)</label>
+            <label class="option"><input type="radio" name="vibe" value="Romantico"> Romântico e Delicado</label>
+        </div>
+
+        <div class="form-group">
+            <label class="question">3. O Elemento Principal</label>
+            <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">O que deve chamar a atenção primeiro na arte?</p>
+            <label class="option"><input type="radio" name="elemento" value="Monograma" required> O nosso Monograma (Nossas iniciais desenhadas/entrelaçadas)</label>
+            <label class="option"><input type="radio" name="elemento" value="Flores"> Flores e Folhagens (Elementos da natureza compondo o quadro)</label>
+            <label class="option"><input type="radio" name="elemento" value="Geometria"> Geometria (Linhas retas, bordas finas, design limpo/arquitetônico)</label>
+        </div>
+
+        <div class="form-group">
+            <label class="question">4. A Tipografia (O estilo da letra)</label>
+            <label class="option"><input type="radio" name="fonte" value="Cursiva" required> Letra Cursiva (Estilo escrita à mão, romântica e elegante)</label>
+            <label class="option"><input type="radio" name="fonte" value="Reta"> Letra Reta/Moderna (Firme, limpa e fácil de ler)</label>
+            <label class="option"><input type="radio" name="fonte" value="Mistura"> Uma mistura das duas (Nomes em cursiva, o resto reto)</label>
+        </div>
+
+        <div class="form-group">
+            <label class="question">5. O Arsenal de Personalizados</label>
+            <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">Quais itens você já imaginou para a festa? (Ex: Convite digital, tags de lembrancinha, adesivos, menu, topo de bolo...)</p>
+            <textarea name="itens" placeholder="Escreva aqui tudo que vier à cabeça..."></textarea>
+        </div>
+
+        <button type="submit">Finalizar e Enviar Briefing</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+        Perfeito! Respostas salvas. Agora a bola está comigo para criar a nossa arte! 🚀
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('briefingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Aqui você poderia colocar a lógica para enviar os dados para o seu e-mail ou WhatsApp usando uma API simples, 
+        // mas por enquanto, ele dá um feedback visual de sucesso.
+        
+        this.style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+    });
+</script>
+</body>
+</html>
