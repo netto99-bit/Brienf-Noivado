@@ -21,7 +21,7 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 8px solid #0f2547; /* Azul escuro principal */
+            border-top: 8px solid #0f2547;
         }
         h1 {
             color: #0f2547;
@@ -124,7 +124,7 @@
             <label class="option"><input type="radio" name="vibe" value="Clássico" required> Clássico e Tradicional</label>
             <label class="option"><input type="radio" name="vibe" value="Rústico"> Rústico (Texturas de madeira, kraft, algo mais quente)</label>
             <label class="option"><input type="radio" name="vibe" value="Minimalista"> Minimalista (Menos é mais, fundo limpo, direto ao ponto)</label>
-            <label class="option"><input type="radio" name="vibe" value="Romantico"> Romântico e Delicado</label>
+            <label class="option"><input type="radio" name="vibe" value="Romântico"> Romântico e Delicado</label>
         </div>
 
         <div class="form-group">
@@ -132,7 +132,7 @@
             <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">O que deve chamar a atenção primeiro na arte?</p>
             <label class="option"><input type="radio" name="elemento" value="Monograma" required> O nosso Monograma (Nossas iniciais desenhadas/entrelaçadas)</label>
             <label class="option"><input type="radio" name="elemento" value="Flores"> Flores e Folhagens (Elementos da natureza compondo o quadro)</label>
-            <label class="option"><input type="radio" name="elemento" value="Geometria"> Geometria (Linhas retas, bordas finas, design limpo/arquitetônico)</label>
+            <label class="option"><input type="radio" name="elemento" value="Geometria"> Geometria (Linhas retas, bordas finas, design limpo)</label>
         </div>
 
         <div class="form-group">
@@ -144,15 +144,15 @@
 
         <div class="form-group">
             <label class="question">5. O Arsenal de Personalizados</label>
-            <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">Quais itens você já imaginou para a festa? (Ex: Convite digital, tags de lembrancinha, adesivos, menu, topo de bolo...)</p>
-            <textarea name="itens" placeholder="Escreva aqui tudo que vier à cabeça..."></textarea>
+            <p style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 10px;">Quais itens você já imaginou para a festa?</p>
+            <textarea id="itensInput" name="itens" placeholder="Escreva aqui tudo que vier à cabeça..."></textarea>
         </div>
 
         <button type="submit">Finalizar e Enviar Briefing</button>
     </form>
 
     <div class="success-msg" id="successMsg">
-        Perfeito! Respostas salvas. Agora a bola está comigo para criar a nossa arte! 🚀
+        Prontinho! Abrindo o WhatsApp para me entregar as respostas... 🚀
     </div>
 
 </div>
@@ -161,11 +161,36 @@
     document.getElementById('briefingForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Aqui você poderia colocar a lógica para enviar os dados para o seu e-mail ou WhatsApp usando uma API simples, 
-        // mas por enquanto, ele dá um feedback visual de sucesso.
+        // 1. Coleta os dados preenchidos
+        const cores = document.querySelector('input[name="cores"]:checked')?.value || 'Não selecionado';
+        const vibe = document.querySelector('input[name="vibe"]:checked')?.value || 'Não selecionado';
+        const elemento = document.querySelector('input[name="elemento"]:checked')?.value || 'Não selecionado';
+        const fonte = document.querySelector('input[name="fonte"]:checked')?.value || 'Não selecionado';
+        const itens = document.getElementById('itensInput').value || 'Nenhum item adicional informado';
         
+        // 2. Monta o texto formatado para o WhatsApp
+        const mensagem = `*💍 NOSSO BRIEFING DE NOIVADO 💍*\n\n` +
+                         `🎨 *Cores de Apoio:* ${cores}\n` +
+                         `✨ *Vibe do Evento:* ${vibe}\n` +
+                         `📐 *Elemento Principal:* ${elemento}\n` +
+                         `✍️ *Estilo da Letra (Fonte):* ${fonte}\n\n` +
+                         `🎁 *Itens que ela pensou:*\n${itens}`;
+        
+        // 3. CONFIGURAÇÃO DE TELEFONE:
+        // Coloque seu número completo com o código do país (55) + DDD + Número.
+        // Exemplo: "5582999999999" (Substitua pelo seu número real abaixo)
+        const meuNumero = "5581997222720"; 
+        
+        // 4. Cria o link de envio
+        const urlCalculada = `https://api.whatsapp.com/send?phone=${meuNumero}&text=${encodeURIComponent(mensagem)}`;
+        
+        // 5. Interface de sucesso e redirecionamento
         this.style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
+        
+        setTimeout(function() {
+            window.location.href = urlCalculada;
+        }, 1200);
     });
 </script>
 </body>
